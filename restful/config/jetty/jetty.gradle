@@ -1,0 +1,7 @@
+logger.info 'Applying Jetty plugin'
+apply plugin: 'jetty'
+
+jettyRun {
+    httpPort = 16313
+    contextPath = 'restfulExample'
+}
