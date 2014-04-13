@@ -1,9 +1,10 @@
 
+This is a example of Restful
 
-This is a demo of spring mvc web application project with gradle.
+Clone this project and use command 'gradle idea' to download all the dependencies
 
-
-
-It will contain a very simple example of Hello world.
+Then use gradle 'gradle jettyRun'
+Then input 'http://localhost:16313/restfulExample/students.html' to display all the students's info
+Then input 'http://localhost:16313/restfulExample/students.json' to get the json data of all the students.
 
 

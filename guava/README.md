@@ -20,3 +20,5 @@
    Then you have to use guava filter to filter the person who are older than 18.
    And the person who's name contains '1' character.
    And the person who satisfies the above two conditions.
+   And all person's names
+   And all person's names who are older that 18 as well as name contains '1' character
