@@ -1,1 +1,1 @@
-include 'restful'
+include 'restful','guava'
