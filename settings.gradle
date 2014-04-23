@@ -1,1 +1,1 @@
-include 'restful','guava'
+include 'restful','guava','BookShelf'
