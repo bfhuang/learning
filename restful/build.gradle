@@ -8,6 +8,7 @@ repositories {
 
 dependencies {
     compile "org.springframework:spring-webmvc:4.0.0.RELEASE",
-            'org.codehaus.jackson:jackson-mapper-asl:1.9.13',
-            'jstl:jstl:1.2'
+            'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+
+
 }

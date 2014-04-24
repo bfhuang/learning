@@ -12,3 +12,11 @@ subprojects {
         testCompile "junit:junit:4.8.2"
     }
 }
+
+["restful","BookShelf"].each{
+        project(":$it"){
+            dependencies{
+                compile 'jstl:jstl:1.2'
+            }
+        }
+}

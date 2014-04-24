@@ -6,6 +6,5 @@ repositories {
 }
 
 dependencies {
-    compile "org.springframework:spring-webmvc:4.0.0.RELEASE",
-            'jstl:jstl:1.2'
+    compile "org.springframework:spring-webmvc:4.0.0.RELEASE"
 }
