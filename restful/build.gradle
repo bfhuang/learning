@@ -2,10 +2,6 @@ apply plugin: 'war'
 
 apply from: 'config/jetty/jetty.gradle'
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     compile "org.springframework:spring-webmvc:4.0.0.RELEASE",
             'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
