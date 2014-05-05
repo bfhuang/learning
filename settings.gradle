@@ -1,1 +1,1 @@
-include 'restful','guava','BookShelf'
+include 'restful','guava','BookShelf','log4j'
