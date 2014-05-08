@@ -12,7 +12,7 @@ public class DisplayBookServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MySQLAccess mySQLAccess = new MySQLAccess();
+		MySQLAccess mySQLAccess = new MySQLAccess(getServletContext());
 
 		request.setAttribute("books", mySQLAccess.query());
 		request.getRequestDispatcher("WEB-INF/pages/books.jsp").forward(request, response);

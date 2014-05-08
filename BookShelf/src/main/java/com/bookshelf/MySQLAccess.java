@@ -2,17 +2,25 @@ package com.bookshelf;
 
 
 import org.apache.commons.dbcp.BasicDataSource;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import javax.servlet.ServletContext;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MySQLAccess {
-	private Connection connect ;
+	private ServletContext servletContext;
 	private Statement statement ;
 
+	public MySQLAccess(ServletContext servletContext) {
+		this.servletContext = servletContext;
+	}
+
+	public MySQLAccess() {}
+
 	public void insert(Book book) {
-		connect = getConnectionThroughDriverManager();
+		Connection connect = getConnectionThroughDriverManager();
 		System.out.println(connect);
 		try {
 			statement = connect.createStatement();
@@ -33,7 +41,7 @@ public class MySQLAccess {
 	}
 
 	public List<Book> query() {
-		connect = getConnectionThroughBasicDataSource();
+		Connection connect = getConnectionThroughApplicationContext();
 		List<Book> books = new ArrayList<Book>();
 		try {
 			statement =  connect.createStatement();
@@ -58,6 +66,18 @@ public class MySQLAccess {
 			}
 		}
 		return books;
+	}
+
+	private Connection getConnectionThroughApplicationContext() {
+		ClassPathXmlApplicationContext applicationContextOfSpring =
+				(ClassPathXmlApplicationContext) servletContext.getAttribute("applicationContextOfSpring");
+		BasicDataSource basicDataSource = (BasicDataSource) applicationContextOfSpring.getBean("basicDataSource");
+		try {
+			return basicDataSource.getConnection();
+		} catch (SQLException e) {
+			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+		}
+		return null;
 	}
 
 	private Connection getConnectionThroughDriverManager() {
@@ -100,5 +120,4 @@ public class MySQLAccess {
 		System.out.println(books.size());
 		System.out.println(books.get(0).getName());
 	}
-
 }
