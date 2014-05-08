@@ -5,12 +5,23 @@
 
 
     <servlet>
-        <servlet-name>bookShelfServlet</servlet-name>
-        <servlet-class>com.bookshelf.BookShelfServlet</servlet-class>
+        <servlet-name>addBookServlet</servlet-name>
+        <servlet-class>com.bookshelf.AddBookServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>bookShelfServlet</servlet-name>
+        <servlet-name>addBookServlet</servlet-name>
         <url-pattern>/add</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>displayBookServlet</servlet-name>
+        <servlet-class>com.bookshelf.DisplayBookServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>displayBookServlet</servlet-name>
+        <url-pattern>/display</url-pattern>
+    </servlet-mapping>
+
 </web-app>

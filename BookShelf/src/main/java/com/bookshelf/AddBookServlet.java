@@ -6,29 +6,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 
-public class BookShelfServlet extends HttpServlet {
+public class AddBookServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request,
 	                   HttpServletResponse response) throws ServletException, IOException {
 
+		System.out.println("===========================");
 		Book book = new Book();
 		book.setIsbn(Integer.parseInt(request.getParameter("isbn")));
 		book.setName(request.getParameter("name"));
 		book.setPrice(Double.parseDouble(request.getParameter("price")));
 		book.setAuthor(request.getParameter("author"));
-        int add = 0;
+		System.out.println("232323");
 		MySQLAccess mySQLAccess = new MySQLAccess();
-		try {
-			add = mySQLAccess.add(book);
-		} catch (SQLException e) {
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-		}
-		if(add == 0)
-			response.getWriter().println("no");
-		else
-			response.getWriter().println("yes");
+		mySQLAccess.insert(book);
+
+		request.setAttribute("books", mySQLAccess.query());
+		request.getRequestDispatcher("WEB-INF/pages/books.jsp").forward(request, response);
 	}
 
 	public void doGet(HttpServletRequest request,
