@@ -11,16 +11,17 @@ import java.util.List;
 
 public class MySQLAccess {
 	private ServletContext servletContext;
-	private Statement statement ;
+	private Statement statement;
 
 	public MySQLAccess(ServletContext servletContext) {
 		this.servletContext = servletContext;
 	}
 
-	public MySQLAccess() {}
+	public MySQLAccess() {
+	}
 
 	public void insert(Book book) {
-		Connection connect = getConnectionThroughDriverManager();
+		Connection connect = getConnectionThroughApplicationContext();
 		System.out.println(connect);
 		try {
 			statement = connect.createStatement();
@@ -28,7 +29,7 @@ public class MySQLAccess {
 					book.getName() + "'," +
 					book.getPrice() + ",'" +
 					book.getAuthor() + "');";
-			 statement.executeUpdate(sql);
+			statement.executeUpdate(sql);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		} finally {
@@ -44,10 +45,10 @@ public class MySQLAccess {
 		Connection connect = getConnectionThroughApplicationContext();
 		List<Book> books = new ArrayList<Book>();
 		try {
-			statement =  connect.createStatement();
+			statement = connect.createStatement();
 			ResultSet resultSet = statement.executeQuery("select * from book;");
 			Book book;
-			while(resultSet.next()){
+			while (resultSet.next()) {
 				book = new Book();
 				book.setIsbn(resultSet.getInt("isbn"));
 				book.setName(resultSet.getString("name"));
@@ -56,9 +57,9 @@ public class MySQLAccess {
 				books.add(book);
 			}
 
-		}catch (Exception e){
+		} catch (Exception e) {
 			System.out.println("Query the data failed");
-		}finally {
+		} finally {
 			try {
 				connect.close();
 			} catch (SQLException e) {
@@ -87,7 +88,7 @@ public class MySQLAccess {
 			connection = DriverManager
 					.getConnection("jdbc:mysql://localhost:3306/bookShelf", "root", "");
 
-		}catch (Exception e) {
+		} catch (Exception e) {
 			System.out.println("Connect to database failed" + e.getMessage());
 		}
 		return connection;
@@ -99,7 +100,7 @@ public class MySQLAccess {
 		BasicDataSource bdSource = new BasicDataSource();
 
 		bdSource.setDriverClassName("com.mysql.jdbc.Driver");
-		bdSource.setUrl("jdbc:mysql://localhost:3306/bookShelf");
+		bdSource.setUrl("jdbc:mysql://localhost:3306/test");
 		bdSource.setUsername("root");
 		bdSource.setPassword("");
 
@@ -111,13 +112,55 @@ public class MySQLAccess {
 		return connection;
 	}
 
+	private void insertTest() {
+		Connection connect = getConnectionThroughBasicDataSource();
+		System.out.println(connect);
+		try {
+			statement = connect.createStatement();
+			for (int i =  0; i < 5000000; i++) {
+				String sql = "insert into student values('name'," + i + ");";
+				statement.executeUpdate(sql);
+			}
+			for(int i = 0; i<1000000; i++){
+				String sql = "insert into class values('class'," + i + ");";
+				statement.executeUpdate(sql);
+			}
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		} finally {
+			try {
+				connect.close();
+			} catch (SQLException e) {
+				e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			}
+		}
+	}
+
+
+
+	private void queryTest() {
+		Connection connect = getConnectionThroughBasicDataSource();
+		System.out.println(connect);
+		try {
+			statement = connect.createStatement();
+				String sql = "select student.number from student, class where student.number=class.studentNumber";
+				statement.executeQuery(sql);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		} finally {
+			try {
+				connect.close();
+			} catch (SQLException e) {
+				e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			}
+		}
+	}
 
 	public static void main(String[] args) {
 		MySQLAccess mySQLAccess = new MySQLAccess();
+		mySQLAccess.insertTest();
 
 
-		List<Book> books = mySQLAccess.query();
-		System.out.println(books.size());
-		System.out.println(books.get(0).getName());
+
 	}
 }

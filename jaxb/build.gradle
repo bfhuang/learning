@@ -1,0 +1,57 @@
+configurations {
+    jaxb
+}
+
+ext {
+    schemaTargetDir = new File("${project.projectDir}/src/generated".toString())
+}
+
+
+dependencies {
+    jaxb group: 'com.sun.xml.bind', name: 'jaxb-xjc', version: '2.2.4-1'
+}
+
+clean {
+    doLast {
+        ant.delete (includeEmptyDirs:'true') {
+            fileset(dir:file('src/generated'), includes: '**/*')
+        }
+    }
+}
+
+task generateSource () {
+    inputs.dir 'schema'
+    outputs.dir 'src/generated'
+
+    doLast {
+        ant.taskdef(name: 'xjc', classname: 'com.sun.tools.xjc.XJCTask', classpath: configurations.jaxb.asPath)
+
+        ant.xjc(
+                destdir: schemaTargetDir,
+                package: 'person',
+                schema: 'schema/person.xsd'
+        )
+    }
+}
+
+sourceSets {
+    generated {
+        java {
+            srcDirs = [schemaTargetDir]
+        }
+    }
+}
+
+compileJava {
+    dependsOn generateSource
+    source schemaTargetDir
+
+}
+
+afterEvaluate {
+    idea {
+        module {
+            sourceDirs = sourceDirs + sourceSets.generated.allSource.srcDirs.flatten() as LinkedHashSet
+        }
+    }
+}
