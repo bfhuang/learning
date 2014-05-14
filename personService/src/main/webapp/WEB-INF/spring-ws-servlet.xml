@@ -11,7 +11,7 @@
     <context:component-scan base-package="org.springbyexample.ws.service"/>
     <sws:annotation-driven/>
 
-    <sws:dynamic-wsdl id="person" portTypeName="Person" locationUri="localhost:8081/service/ws">
+    <sws:dynamic-wsdl id="person" portTypeName="Person" locationUri="localhost:8081/personService/ws">
         <sws:xsd location="classpath:person.xsd"/>
     </sws:dynamic-wsdl>
 
