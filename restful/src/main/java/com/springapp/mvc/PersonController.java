@@ -6,27 +6,33 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import student.Student;
-import student.StudentService;
+import person.Person;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/students")
-public class StudentController {
-
-	private StudentService studentService = new StudentService();
+@RequestMapping(value = "/person")
+public class PersonController {
 
 
 	@RequestMapping(method = RequestMethod.GET, produces = {MediaType.TEXT_HTML_VALUE})
-	public String getStudents(ModelMap model) {
-		model.addAttribute("students", studentService.getAllStudent());
-		return "students";
+	public String getPerson(ModelMap model) {
+		model.addAttribute("people", Arrays.asList(createPerson()));
+		return "person";
+	}
+
+	private Person createPerson() {
+		Person person = new Person();
+		person.setId(1);
+		person.setFirstName("firstName");
+		person.setLastName("lastName");
+		return person;
 	}
 
 	@RequestMapping(method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
 	@ResponseBody
-	public List<Student> getJson() {
-		return studentService.getAllStudent();
+	public List<Person> getPerson() {
+		return Arrays.asList(createPerson());
 	}
 }

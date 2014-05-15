@@ -4,7 +4,8 @@ apply from: 'config/jetty/jetty.gradle'
 
 dependencies {
     compile "org.springframework:spring-webmvc:4.0.0.RELEASE",
-            'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+            'org.codehaus.jackson:jackson-mapper-asl:1.9.13',
+            project(':jaxb')
 
 
 }

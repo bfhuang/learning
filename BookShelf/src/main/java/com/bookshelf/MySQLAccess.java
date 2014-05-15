@@ -117,14 +117,13 @@ public class MySQLAccess {
 		System.out.println(connect);
 		try {
 			statement = connect.createStatement();
-			for (int i =  0; i < 5000000; i++) {
-				String sql = "insert into student values('name'," + i + ");";
+			for (int i =  50000; i < 1000000; i++) {
+				String sql = "insert into school values('name'," + i + ");";
 				statement.executeUpdate(sql);
+
+
 			}
-			for(int i = 0; i<1000000; i++){
-				String sql = "insert into class values('class'," + i + ");";
-				statement.executeUpdate(sql);
-			}
+
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		} finally {
