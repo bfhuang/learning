@@ -1,9 +1,14 @@
 package com.bookshelf;
 
+import org.apache.commons.dbcp.BasicDataSource;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -19,10 +24,11 @@ public class AddBookServlet extends HttpServlet {
 		book.setPrice(Double.parseDouble(request.getParameter("price")));
 		book.setAuthor(request.getParameter("author"));
 		System.out.println("232323");
-		MySQLAccess mySQLAccess = new MySQLAccess();
-		mySQLAccess.insert(book);
+		ServletContext servletContext = getServletContext();
+		BookService bookService = new BookService(getBasicDataSource(getServletContext()));
+		bookService.insert(book);
 
-		request.setAttribute("books", mySQLAccess.query());
+		request.setAttribute("books", bookService.query());
 		request.getRequestDispatcher("WEB-INF/pages/books.jsp").forward(request, response);
 	}
 
@@ -39,5 +45,11 @@ public class AddBookServlet extends HttpServlet {
 				"<input type=\"submit\" value=\"Submit\" />\n" +
 				"</form>"
 		);
+	}
+
+	private DataSource getBasicDataSource(ServletContext servletContext) {
+		ClassPathXmlApplicationContext applicationContextOfSpring =
+				(ClassPathXmlApplicationContext) servletContext.getAttribute("applicationContextOfSpring");
+		return (BasicDataSource) applicationContextOfSpring.getBean("basicDataSource");
 	}
 }
