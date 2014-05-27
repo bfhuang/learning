@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import person.Person;
 
 import java.util.Arrays;
-import java.util.List;
 
 @Controller
 @RequestMapping(value = "/person")
@@ -32,7 +31,15 @@ public class PersonController {
 
 	@RequestMapping(method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
 	@ResponseBody
-	public List<Person> getPerson() {
-		return Arrays.asList(createPerson());
+	public Person getPerson() {
+		return createPerson();
 	}
+
+
+//	@RequestMapping(method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+//	@ResponseBody
+//	public List<Person> getPerson() {
+//		return Arrays.asList(createPerson());
+//	}
+
 }
