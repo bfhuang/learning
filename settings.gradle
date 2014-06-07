@@ -1,1 +1,2 @@
-include 'restful','guava','BookShelf','log4j','personService','jaxb','personClient'
+include 'restful','guava','BookShelf','log4j','personService',
+        'jaxb','personClient','RandomNumberGame'

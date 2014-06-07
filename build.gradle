@@ -9,14 +9,15 @@ subprojects {
     }
 
     dependencies {
-        testCompile "junit:junit:4.8.2"
+        testCompile "junit:junit:4.8.2",
+                "org.hamcrest:hamcrest-all:1.3"
     }
 }
 
-["restful","BookShelf"].each{
-        project(":$it"){
-            dependencies{
-                compile 'jstl:jstl:1.2'
-            }
+["restful", "BookShelf"].each {
+    project(":$it") {
+        dependencies {
+            compile 'jstl:jstl:1.2'
         }
+    }
 }
