@@ -1,0 +1,9 @@
+task "create-dir" << {
+    sourceSets*.java.srcDirs*.each { it.mkdirs() }
+    sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+}
+
+//
+//dependencies {
+//    testCompile 'org.hamcrest:hamcrest-all:1.3'
+//}
