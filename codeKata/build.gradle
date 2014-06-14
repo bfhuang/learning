@@ -3,7 +3,7 @@ task "create-dir" << {
     sourceSets*.resources.srcDirs*.each { it.mkdirs() }
 }
 
-//
-//dependencies {
-//    testCompile 'org.hamcrest:hamcrest-all:1.3'
-//}
+
+dependencies {
+    compile 'javax.mail:mail:1.4'
+}
