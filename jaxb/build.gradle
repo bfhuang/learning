@@ -31,11 +31,6 @@ task generateSource () {
                 package: 'person',
                 schema: 'schema/person.xsd'
         )
-        ant.xjc(
-                destdir: schemaTargetDir,
-                package: 'test',
-                schema: 'schema/test.xsd'
-        )
     }
 }
 

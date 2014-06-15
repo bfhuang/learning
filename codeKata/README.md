@@ -1,4 +1,6 @@
-Requirement:
+Requirements:
+
+game1
 
 1. The game system will generate four different random numbers in (0-9).(System numbers)
 
