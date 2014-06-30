@@ -1,4 +1,4 @@
-package com.bookshelf;
+package domain;
 
 public class Book {
 	private int isbn;

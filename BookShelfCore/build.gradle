@@ -1,0 +1,4 @@
+task "create-dir" << {
+    sourceSets*.java.srcDirs*.each { it.mkdirs() }
+    sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+}

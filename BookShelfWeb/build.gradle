@@ -1,0 +1,35 @@
+apply plugin: 'war'
+apply plugin: 'jetty'
+
+configurations {
+    myConfiguration
+//    这里的所有方法都会代理给configurationContainer
+}
+
+ext {
+    myProperty = 'propertyValue'
+}
+
+dependencies {
+    providedCompile 'javax.servlet:servlet-api:2.5',
+            'mysql:mysql-connector-java:5.1.30',
+            'commons-dbcp:commons-dbcp:1.2.2',
+            'org.springframework:spring-context:4.0.3.RELEASE',
+            project(':BookShelfCore')
+
+    myConfiguration 'commons-dbcp:commons-dbcp:1.2.2'
+}
+
+task printConfigurationPath << {
+    println configurations.myConfiguration.asPath
+}
+
+task printConfigurations << {
+    println configurations
+}
+
+printConfigurationPath.onlyIf {project.hasProperty('myProperty')}
+
+
+
+

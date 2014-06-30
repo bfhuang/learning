@@ -14,7 +14,7 @@ subprojects {
     }
 }
 
-["restful", "BookShelf"].each {
+["restful", "BookShelfWeb"].each {
     project(":$it") {
         dependencies {
             compile 'jstl:jstl:1.2'

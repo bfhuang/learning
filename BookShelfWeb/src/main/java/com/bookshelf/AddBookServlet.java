@@ -1,5 +1,6 @@
 package com.bookshelf;
 
+import domain.Book;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
