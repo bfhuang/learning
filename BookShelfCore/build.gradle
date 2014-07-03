@@ -4,7 +4,6 @@ task "create-dir" << {
 }
 
 dependencies {
-    compile 'org.springframework:spring-jdbc:4.0.5.RELEASE',
-            'org.springframework:spring-context:4.0.5.RELEASE'
+    compile 'org.springframework:spring-jdbc:4.0.5.RELEASE'
 
 }
