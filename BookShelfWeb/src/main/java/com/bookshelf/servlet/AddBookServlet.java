@@ -2,8 +2,6 @@ package com.bookshelf.servlet;
 
 import domain.Book;
 import org.springframework.context.ApplicationContext;
-import repository.BookRepository;
-import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import service.BookService;
 
@@ -12,7 +10,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.PrintWriter;
 

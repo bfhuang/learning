@@ -8,11 +8,11 @@
 
     <context:property-placeholder location="jdbc.properties"/>
 
-    <bean id="bookService" class="service.BookService">
+    <bean id="bookService" class="service.BookServiceImpl">
         <property name="bookRepository" ref="bookRepository"/>
     </bean>
 
-    <bean id="bookRepository" class="repository.BookRepository">
+    <bean id="bookRepository" class="repository.BookRepositoryImpl">
         <constructor-arg ref="jdbcTemplate"/>
     </bean>
 

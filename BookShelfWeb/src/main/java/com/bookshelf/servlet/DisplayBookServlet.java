@@ -27,9 +27,5 @@ public class DisplayBookServlet extends HttpServlet {
         ApplicationContext applicationContextOfSpring =
                 (ClassPathXmlApplicationContext) servletContext.getAttribute("applicationContextOfSpring");
         return (BookService) applicationContextOfSpring.getBean("bookService");
-//
-
-//        ApplicationContext context = new ClassPathXmlApplicationContext("springBeans.xml");
-//        return (BookService) context.getBean("bookService");
     }
 }
