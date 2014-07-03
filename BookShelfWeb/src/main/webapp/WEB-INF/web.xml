@@ -5,12 +5,12 @@
 
 
     <listener>
-        <listener-class>com.bookshelf.MyContextListener</listener-class>
+        <listener-class>com.bookshelf.listener.MyContextListener</listener-class>
     </listener>
 
     <servlet>
         <servlet-name>addBookServlet</servlet-name>
-        <servlet-class>com.bookshelf.AddBookServlet</servlet-class>
+        <servlet-class>com.bookshelf.servlet.AddBookServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -20,7 +20,7 @@
 
     <servlet>
         <servlet-name>displayBookServlet</servlet-name>
-        <servlet-class>com.bookshelf.DisplayBookServlet</servlet-class>
+        <servlet-class>com.bookshelf.servlet.DisplayBookServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

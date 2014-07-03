@@ -1,4 +1,4 @@
-package com.bookshelf;
+package com.bookshelf.listener;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
