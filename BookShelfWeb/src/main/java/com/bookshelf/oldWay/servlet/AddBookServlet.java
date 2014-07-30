@@ -1,4 +1,4 @@
-package com.bookshelf.servlet;
+package com.bookshelf.oldWay.servlet;
 
 import domain.Book;
 import org.springframework.context.ApplicationContext;
@@ -40,7 +40,7 @@ public class AddBookServlet extends HttpServlet {
 
 		PrintWriter writer = response.getWriter();
 		writer.println("<h1>" + "BookShelf,get" + "</h1>");
-		writer.println("<form action=\"add\" method='post'>" +
+		writer.println("<form action=\"addBook\" method='post'>" +
 				"ISBN: <input type=\"text\" name=\"isbn\" />\n" +
 				"Name: <input type=\"text\" name=\"name\" />\n" +
 				"Price: <input type=\"text\" name=\"price\" />\n" +

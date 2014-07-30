@@ -1,4 +1,4 @@
-package com.bookshelf.servlet;
+package com.bookshelf.oldWay.servlet;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

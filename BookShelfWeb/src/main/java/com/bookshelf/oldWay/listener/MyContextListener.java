@@ -1,4 +1,4 @@
-package com.bookshelf.listener;
+package com.bookshelf.oldWay.listener;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -22,7 +22,7 @@ public class MyContextListener implements ServletContextListener,
 	// -------------------------------------------------------
 	public void contextInitialized(ServletContextEvent sce) {
 		ServletContext servletContext = sce.getServletContext();
-		servletContext.setAttribute("applicationContextOfSpring", new ClassPathXmlApplicationContext("springBeans.xml"));
+		servletContext.setAttribute("applicationContextOfSpring", new ClassPathXmlApplicationContext("applicationContext.xml"));
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {

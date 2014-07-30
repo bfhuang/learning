@@ -3,29 +3,54 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
 	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
-
+    <!--servlet written by myself-->
     <listener>
-        <listener-class>com.bookshelf.listener.MyContextListener</listener-class>
+        <listener-class>com.bookshelf.oldWay.listener.MyContextListener</listener-class>
     </listener>
 
     <servlet>
         <servlet-name>addBookServlet</servlet-name>
-        <servlet-class>com.bookshelf.servlet.AddBookServlet</servlet-class>
+        <servlet-class>com.bookshelf.oldWay.servlet.AddBookServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>addBookServlet</servlet-name>
-        <url-pattern>/add</url-pattern>
+        <url-pattern>/addBook</url-pattern>
     </servlet-mapping>
 
     <servlet>
         <servlet-name>displayBookServlet</servlet-name>
-        <servlet-class>com.bookshelf.servlet.DisplayBookServlet</servlet-class>
+        <servlet-class>com.bookshelf.oldWay.servlet.DisplayBookServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>displayBookServlet</servlet-name>
-        <url-pattern>/display</url-pattern>
+        <url-pattern>/displayBook</url-pattern>
     </servlet-mapping>
+
+  <!--spring controller-->
+    
+    <servlet>
+        <servlet-name>springDispatcherServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:springDispatcherServlet.xml</param-value>
+        </init-param>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>springDispatcherServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
 </web-app>
