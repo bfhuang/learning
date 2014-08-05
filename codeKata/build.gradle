@@ -5,6 +5,7 @@ task "create-dir" << {
 
 
 dependencies {
-    compile 'javax.mail:mail:1.4'
+    compile 'javax.mail:mail:1.4',
+            'org.springframework:spring-webmvc:4.0.0.RELEASE'
 
 }
