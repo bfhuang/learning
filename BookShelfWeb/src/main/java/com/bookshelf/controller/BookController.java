@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import service.BookService;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -19,20 +18,27 @@ public class BookController {
     @Autowired
     BookService bookService;
 
-    @RequestMapping(method = GET)
-    public String retrieveBooks(ModelMap modelMap) {
+    @RequestMapping(value = "add", method = GET)
+    public String addBookForm() {
+        return "addBook";
+    }
+
+//    No need to add the action to the form and the name for the form.
+// This function will get the book's properties based on the property name.
+    //should use redirect to get all books instead of calling the display method,
+    // if in later way, the url of showing all books is 'add' and when you refresh the page,
+//    it  will do post again
+//    PRG(post redirect get) pattern
+    @RequestMapping(value = "add", method = POST)
+    public String addBook(@ModelAttribute Book book) {
+        bookService.add(book);
+        return "redirect:display";
+    }
+
+//    should keep the url meaningful
+    @RequestMapping("display")
+    public String display(ModelMap modelMap) {
         modelMap.put("books", bookService.query());
         return "books";
-    }
-
-    @RequestMapping(method = POST)
-    public String addBook(@ModelAttribute("book") Book book, ModelMap modelMap) {
-        bookService.add(book);
-        return retrieveBooks(modelMap);
-    }
-
-    @RequestMapping("/add")
-    public String addBook() {
-        return "addBook";
     }
 }

@@ -9,8 +9,8 @@ public class Book {
 	public void setIsbn(int isbn) {
 		this.isbn = isbn;
 	}
-
-	public int getIsbn() {
+    
+    public int getIsbn() {
 		return isbn;
 	}
 

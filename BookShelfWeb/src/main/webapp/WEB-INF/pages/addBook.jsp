@@ -1,7 +1,8 @@
 <html>
 <body>
 <table>
-   <form action="/book" method="post" name="book">
+
+   <form method="post">
        ISBN: <input type="text" name="isbn"><br/>
        name: <input type="text" name="name"><br/>
        price: <input type="text" name="price"><br/>
