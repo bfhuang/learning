@@ -26,9 +26,9 @@ public class BookController {
     }
 
     @RequestMapping(method = POST)
-    public String addBook(@ModelAttribute("book") Book book) {
+    public String addBook(@ModelAttribute("book") Book book, ModelMap modelMap) {
         bookService.add(book);
-        return "books";
+        return retrieveBooks(modelMap);
     }
 
     @RequestMapping("/add")
