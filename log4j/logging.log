@@ -1,0 +1,10 @@
+2014-12-17 22:43:08 WARN  TestLogger:19 - warn
+2014-12-17 22:43:08 ERROR TestLogger:20 - error
+2014-12-17 22:43:08 FATAL TestLogger:21 - fatal
+2014-12-17 22:43:08 INFO  Log4jExample:27 - info
+2014-12-17 22:43:08 WARN  Log4jExample:28 - warn
+2014-12-17 22:43:08 ERROR Log4jExample:29 - error
+2014-12-17 22:43:08 FATAL Log4jExample:30 - fatal
+2014-12-17 22:43:08 WARN  TestLogger:44 - warn
+2014-12-17 22:43:08 ERROR TestLogger:45 - error
+2014-12-17 22:43:08 FATAL TestLogger:46 - fatal

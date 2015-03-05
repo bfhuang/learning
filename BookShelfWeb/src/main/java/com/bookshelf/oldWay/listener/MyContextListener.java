@@ -23,6 +23,7 @@ public class MyContextListener implements ServletContextListener,
 	public void contextInitialized(ServletContextEvent sce) {
 		ServletContext servletContext = sce.getServletContext();
 		servletContext.setAttribute("applicationContextOfSpring", new ClassPathXmlApplicationContext("applicationContext.xml"));
+		servletContext.setAttribute("a", "attribute in servletContext");
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {

@@ -16,6 +16,9 @@
            <td> ${book.author}</td>
     </tr>
 </c:forEach>
+${a}
+${applicationContextOfSpring.}
+
 
 </table>
 </body>
