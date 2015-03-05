@@ -16,8 +16,8 @@
            <td> ${book.author}</td>
     </tr>
 </c:forEach>
-${a}
-${applicationContextOfSpring.}
+${toggle}
+<%--${applicationContextOfSpring.}--%>
 
 
 </table>

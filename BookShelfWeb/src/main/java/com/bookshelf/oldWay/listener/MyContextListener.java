@@ -1,6 +1,9 @@
 package com.bookshelf.oldWay.listener;
 
+import com.bookshelf.Toggle;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -22,8 +25,9 @@ public class MyContextListener implements ServletContextListener,
 	// -------------------------------------------------------
 	public void contextInitialized(ServletContextEvent sce) {
 		ServletContext servletContext = sce.getServletContext();
-		servletContext.setAttribute("applicationContextOfSpring", new ClassPathXmlApplicationContext("applicationContext.xml"));
-		servletContext.setAttribute("a", "attribute in servletContext");
+		WebApplicationContext webApplicationContext = WebApplicationContextUtils.getWebApplicationContext(servletContext);
+		Toggle toggle = (Toggle) webApplicationContext.getBean("toggle");
+		servletContext.setAttribute("toggle", toggle.getUrl());
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {

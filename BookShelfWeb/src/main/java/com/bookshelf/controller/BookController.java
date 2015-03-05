@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import service.BookService;
 
+import java.util.ArrayList;
+
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -38,7 +40,10 @@ public class BookController {
 //    should keep the url meaningful
     @RequestMapping("display")
     public String display(ModelMap modelMap) {
-        modelMap.put("books", bookService.query());
+        Book book = new Book();
+        ArrayList<Book> books = new ArrayList<Book>();
+        books.add(book);
+        modelMap.put("books", books);
         return "books";
     }
 }

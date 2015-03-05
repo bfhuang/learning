@@ -4,9 +4,6 @@
 	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
     <!--servlet written by myself-->
-    <listener>
-        <listener-class>com.bookshelf.oldWay.listener.MyContextListener</listener-class>
-    </listener>
 
     <servlet>
         <servlet-name>addBookServlet</servlet-name>
@@ -50,7 +47,11 @@
     </context-param>
 
     <listener>
+        <listener-class>com.bookshelf.oldWay.listener.MyContextListener</listener-class>
+    </listener>
+    <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+
 
 </web-app>

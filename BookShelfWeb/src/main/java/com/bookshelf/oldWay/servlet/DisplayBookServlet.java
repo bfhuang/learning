@@ -1,5 +1,6 @@
 package com.bookshelf.oldWay.servlet;
 
+import domain.Book;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import service.BookService;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class DisplayBookServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -17,9 +19,12 @@ public class DisplayBookServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        BookService bookService = getBookService(getServletContext());
+//        BookService bookService = getBookService(getServletContext());
+        Book book = new Book();
+        ArrayList<Book> books = new ArrayList<Book>();
+        books.add(book);
 
-        request.setAttribute("books", bookService.query());
+        request.setAttribute("books", books);
 		request.getRequestDispatcher("WEB-INF/pages/books.jsp").forward(request, response);
 	}
 

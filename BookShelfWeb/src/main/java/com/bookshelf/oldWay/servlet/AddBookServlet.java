@@ -38,16 +38,6 @@ public class AddBookServlet extends HttpServlet {
     public void doGet(HttpServletRequest request,
 	                  HttpServletResponse response) throws ServletException, IOException {
 
-		PrintWriter writer = response.getWriter();
-		writer.println("<h1>" + "BookShelf,get" + "</h1>");
-		writer.println("<form action=\"addBook\" method='post'>" +
-				"ISBN: <input type=\"text\" name=\"isbn\" />\n" +
-				"Name: <input type=\"text\" name=\"name\" />\n" +
-				"Price: <input type=\"text\" name=\"price\" />\n" +
-				"author: <input type=\"text\" name=\"author\" />\n" +
-				"<input type=\"submit\" value=\"Submit\" />\n" +
-				"</form>"
-		);
 	}
 
 	private BookService getBookService(ServletContext servletContext) {
