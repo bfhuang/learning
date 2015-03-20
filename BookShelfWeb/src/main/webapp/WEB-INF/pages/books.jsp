@@ -16,9 +16,8 @@
            <td> ${book.author}</td>
     </tr>
 </c:forEach>
-${toggle}
-<%--${applicationContextOfSpring.}--%>
-
+toggle ${toggle}
+profile ${profile}
 
 </table>
 </body>

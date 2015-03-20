@@ -1,5 +1,6 @@
 package com.bookshelf.controller;
 
+import com.bookshelf.profile.ProfileInterface;
 import domain.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,9 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @Controller
 @RequestMapping("book")
 public class BookController {
+
+    @Autowired
+    ProfileInterface profile;
 
     @Autowired
     BookService bookService;
@@ -40,10 +44,9 @@ public class BookController {
 //    should keep the url meaningful
     @RequestMapping("display")
     public String display(ModelMap modelMap) {
-        Book book = new Book();
-        ArrayList<Book> books = new ArrayList<Book>();
-        books.add(book);
-        modelMap.put("books", books);
+        modelMap.put("books", bookService.query());
+        modelMap.put("profile", profile.getValue());
+
         return "books";
     }
 }

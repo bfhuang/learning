@@ -20,7 +20,7 @@ public class TestLogger {
         log.error("error");
         log.fatal("fatal");
         System.out.println("---------------------\n");
-        log = Logger.getLogger("Log4jExample");
+        log = Logger.getLogger("myPackage.Log4jExample");
 
         log.trace("trace");
         log.debug("debug");
