@@ -13,13 +13,7 @@ dependencies {
             project(':BookShelfCore')
 }
 
-JavaCompiler.dependsOn startScripts
 
-startScripts {
-    doLast {
-        unixScript.text = unixScript.text.replace('DEFAULT_JVM_OPTS=""', 'DEFAULT_JVM_OPTS="-Dspring.profiles.active=two"')
-    }
-}
 
 
 
